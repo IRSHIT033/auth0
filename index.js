@@ -37,7 +37,7 @@ app.get("/accept-invitation", (req, res) => {
 app.post("/invite", async (req, res) => {
   try {
     await sendOrgInvitation(req.body.email);
-    res.send("Invitation sent");
+    res.send(await sendOrgInvitation(req.body.email));
   } catch (error) {
     console.log(error);
     res.status(500).send(`Error sending invitation, ${error}`);
