@@ -27,6 +27,7 @@ app.get("/accept-invitation", (req, res) => {
   console.log(req.query.organization);
   console.log(req.query.invitation);
   res.oidc.login({
+    returnTo: "/",
     authorizationParams: {
       organization: req.query.organization,
       invitation: req.query.invitation,
