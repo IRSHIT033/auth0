@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const { sendOrgInvitation } = require("./auth");
 require("dotenv").config();
+app.use(express.json());
 
 const config = {
   authRequired: false,
