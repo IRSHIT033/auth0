@@ -25,7 +25,7 @@ async function sendOrgInvitation(userEmail) {
           name: "Your App Name",
         },
         client_id: process.env.CLIENT_ID,
-        connection_id: process.env.CONNECTION_ID, // Connection used for signup/login
+        // Connection used for signup/login
         send_invitation_email: true,
       }
     );
