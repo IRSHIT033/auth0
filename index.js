@@ -17,7 +17,9 @@ const config = {
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 
-app.get("/login", (req, res) => {
+app.get("/accept-invitation", (req, res) => {
+  console.log(req.query.organization);
+  console.log(req.query.invitation);
   res.oidc.login({
     authorizationParams: {
       organization: req.query.organization,
