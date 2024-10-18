@@ -26,6 +26,7 @@ async function sendOrgInvitation(userEmail) {
         },
         client_id: process.env.CLIENT_ID,
         connection_id: process.env.CONNECTION_ID, // Connection used for signup/login
+        send_invitation_email: false,
       }
     );
     console.log("Invitation sent: ", invitation);
