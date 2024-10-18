@@ -30,6 +30,7 @@ async function sendOrgInvitation(userEmail) {
       }
     );
     console.log("Invitation sent: ", invitation);
+    return invitation;
   } catch (error) {
     console.error("Error sending invitation: ", error);
   }
