@@ -17,6 +17,11 @@ const config = {
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 
+// req.isAuthenticated is provided from the auth router
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
+
 app.get("/accept-invitation", (req, res) => {
   console.log(req.query.organization);
   console.log(req.query.invitation);
@@ -28,14 +33,9 @@ app.get("/accept-invitation", (req, res) => {
   });
 });
 
-// req.isAuthenticated is provided from the auth router
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
-app.get("/invite", async (req, res) => {
+app.post("/invite", async (req, res) => {
   try {
-    await sendOrgInvitation("mukherjeeirshit50@gmail.com");
+    await sendOrgInvitation(req.body.email);
     res.send("Invitation sent");
   } catch (error) {
     console.log(error);
