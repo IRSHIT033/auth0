@@ -6,6 +6,8 @@ const { sendOrgInvitation } = require("./auth");
 require("dotenv").config();
 app.use(express.json());
 
+console.log(process.env.CLIENT_ID)
+
 const config = {
   authRequired: false,
   auth0Logout: true,
